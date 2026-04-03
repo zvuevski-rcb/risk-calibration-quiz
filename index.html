@@ -1,0 +1,203 @@
+<style>
+  #rcb-quiz-wrap { font-family: 'Segoe UI', -apple-system, sans-serif; color: #1A2A3A; }
+  #rcb-quiz-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+  #rcb-quiz-wrap .qcard { background: #FFFFFF; border: 1px solid #D0DCE8; border-radius: 16px; padding: 2.5rem; max-width: 620px; }
+  #rcb-quiz-wrap .rcb-header { background: #1E3A5F; border-radius: 12px 12px 0 0; padding: 0 1.5rem; height: 50px; display: flex; align-items: center; justify-content: space-between; max-width: 620px; }
+  #rcb-quiz-wrap .logo { display: flex; align-items: center; gap: 8px; }
+  #rcb-quiz-wrap .logo-bar { width: 4px; height: 24px; background: #C9A84C; border-radius: 2px; }
+  #rcb-quiz-wrap .logo-text { font-size: 12px; font-weight: 600; color: #FFFFFF; }
+  #rcb-quiz-wrap .logo-sub { font-size: 10px; color: #9BB5D0; }
+  #rcb-quiz-wrap .header-tag { font-size: 10px; color: #9BB5D0; letter-spacing: .05em; text-transform: uppercase; }
+  #rcb-quiz-wrap h1 { font-size: 22px; font-weight: 600; color: #1E3A5F; margin-bottom: .5rem; }
+  #rcb-quiz-wrap h2 { font-size: 19px; font-weight: 600; color: #1E3A5F; margin-bottom: 1.25rem; }
+  #rcb-quiz-wrap .intro-lead { font-size: 14px; color: #5A6A7A; line-height: 1.7; margin-bottom: 1.25rem; }
+  #rcb-quiz-wrap .info-box { background: #EBF0F8; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+  #rcb-quiz-wrap .info-box-title { font-size: 13px; font-weight: 600; color: #1E3A5F; margin-bottom: 5px; }
+  #rcb-quiz-wrap .info-box-text { font-size: 13px; color: #5A6A7A; line-height: 1.65; }
+  #rcb-quiz-wrap .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem; }
+  #rcb-quiz-wrap .stat-card { background: #EBF0F8; border-radius: 8px; padding: 12px 14px; }
+  #rcb-quiz-wrap .stat-label { font-size: 11px; color: #8A9AAA; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  #rcb-quiz-wrap .stat-value { font-size: 22px; font-weight: 600; color: #1E3A5F; }
+  #rcb-quiz-wrap .note-text { font-size: 12px; color: #8A9AAA; margin-bottom: 1.25rem; }
+  #rcb-quiz-wrap .btn-primary { background: #1E3A5F; color: #FFFFFF; border: none; padding: 11px 26px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  #rcb-quiz-wrap .btn-primary:hover { background: #152A47; }
+  #rcb-quiz-wrap .btn-secondary { background: transparent; color: #1A2A3A; border: 1px solid #B0C0D0; padding: 11px 22px; border-radius: 8px; font-size: 14px; cursor: pointer; font-family: inherit; }
+  #rcb-quiz-wrap .btn-secondary:hover { background: #EBF0F8; }
+  #rcb-quiz-wrap .prog-label { font-size: 12px; color: #8A9AAA; margin-bottom: 5px; }
+  #rcb-quiz-wrap .pbar-bg { height: 4px; background: #D0DCE8; border-radius: 2px; margin-bottom: 1.75rem; }
+  #rcb-quiz-wrap .pbar-fill { height: 4px; background: #C9A84C; border-radius: 2px; transition: width .35s ease; }
+  #rcb-quiz-wrap .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; }
+  #rcb-quiz-wrap .badge-gk { background: #EEEDFE; color: #3C3489; }
+  #rcb-quiz-wrap .badge-cyber { background: #E1F5EE; color: #085041; }
+  #rcb-quiz-wrap .q-text { font-size: 15px; font-weight: 500; color: #1A2A3A; line-height: 1.65; margin-bottom: 6px; }
+  #rcb-quiz-wrap .q-hint { font-size: 12px; color: #8A9AAA; margin-bottom: 1.5rem; }
+  #rcb-quiz-wrap .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 8px; }
+  #rcb-quiz-wrap .input-group label { display: block; font-size: 12px; font-weight: 500; color: #5A6A7A; margin-bottom: 5px; }
+  #rcb-quiz-wrap .input-group input { width: 100%; padding: 9px 12px; border: 1px solid #B0C0D0; border-radius: 8px; font-size: 14px; color: #1A2A3A; background: #FFFFFF; outline: none; font-family: inherit; }
+  #rcb-quiz-wrap .input-group input:focus { border-color: #1E3A5F; box-shadow: 0 0 0 3px rgba(30,58,95,.08); }
+  #rcb-quiz-wrap .err-msg { font-size: 12px; color: #A32D2D; min-height: 18px; margin-bottom: 12px; }
+  #rcb-quiz-wrap .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.75rem; }
+  #rcb-quiz-wrap .metric-card { background: #EBF0F8; border-radius: 8px; padding: 12px 14px; }
+  #rcb-quiz-wrap .metric-label { font-size: 11px; color: #8A9AAA; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  #rcb-quiz-wrap .metric-value { font-size: 26px; font-weight: 700; color: #1E3A5F; }
+  #rcb-quiz-wrap .metric-value.good { color: #0F6E56; }
+  #rcb-quiz-wrap .metric-value.warn { color: #854F0B; }
+  #rcb-quiz-wrap .metric-value.bad { color: #A32D2D; }
+  #rcb-quiz-wrap .sec-title { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #8A9AAA; margin-bottom: 10px; }
+  #rcb-quiz-wrap .bar-wrap { margin-bottom: 1.75rem; }
+  #rcb-quiz-wrap .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  #rcb-quiz-wrap .bar-lbl { font-size: 12px; color: #5A6A7A; width: 76px; text-align: right; flex-shrink: 0; }
+  #rcb-quiz-wrap .bar-track { flex: 1; height: 24px; background: #EBF0F8; border-radius: 5px; overflow: hidden; }
+  #rcb-quiz-wrap .bar-fill { height: 100%; border-radius: 5px; display: flex; align-items: center; padding-left: 10px; font-size: 11px; font-weight: 600; }
+  #rcb-quiz-wrap .bf-exp { background: #B5D4F4; color: #0C447C; }
+  #rcb-quiz-wrap .bf-good { background: #1D9E75; color: #fff; }
+  #rcb-quiz-wrap .bf-warn { background: #BA7517; color: #fff; }
+  #rcb-quiz-wrap .bf-bad { background: #C0392B; color: #fff; }
+  #rcb-quiz-wrap .result-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.75rem; }
+  #rcb-quiz-wrap .result-item { background: #FFFFFF; border: 1px solid #D0DCE8; border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; }
+  #rcb-quiz-wrap .result-item.hit { border-left: 3px solid #1D9E75; border-radius: 0 10px 10px 0; }
+  #rcb-quiz-wrap .result-item.miss { border-left: 3px solid #C0392B; border-radius: 0 10px 10px 0; }
+  #rcb-quiz-wrap .rq { font-size: 13px; font-weight: 500; color: #1A2A3A; margin-bottom: 3px; line-height: 1.5; }
+  #rcb-quiz-wrap .rd { font-size: 12px; color: #5A6A7A; }
+  #rcb-quiz-wrap .rd strong { font-weight: 600; color: #1A2A3A; }
+  #rcb-quiz-wrap .hbadge { font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 20px; white-space: nowrap; }
+  #rcb-quiz-wrap .hbadge.hit { background: #E1F5EE; color: #085041; }
+  #rcb-quiz-wrap .hbadge.miss { background: #FCEBEB; color: #A32D2D; }
+  #rcb-quiz-wrap .insight-box { background: #EBF0F8; border-left: 3px solid #C9A84C; border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+  #rcb-quiz-wrap .insight-title { font-size: 13px; font-weight: 600; color: #1E3A5F; margin-bottom: 5px; }
+  #rcb-quiz-wrap .insight-text { font-size: 13px; color: #5A6A7A; line-height: 1.65; }
+  #rcb-quiz-wrap .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  #rcb-quiz-wrap .sp-footer { font-size: 11px; color: #8A9AAA; text-align: center; padding-top: 1rem; border-top: 1px solid #D0DCE8; margin-top: 1.5rem; max-width: 620px; }
+</style>
+
+<div id="rcb-quiz-wrap">
+  <div class="rcb-header">
+    <div class="logo">
+      <div class="logo-bar"></div>
+      <div>
+        <div class="logo-text">Avenga</div>
+        <div class="logo-sub">Information Security</div>
+      </div>
+    </div>
+    <div class="header-tag">Workshop Tool</div>
+  </div>
+  <div class="qcard" id="qroot"></div>
+  <div class="sp-footer">Avenga &nbsp;·&nbsp; Information Security &nbsp;·&nbsp; Calibration Exercise</div>
+</div>
+
+<script>
+(function() {
+  var Qs = [
+    {cat:"General knowledge",text:"What is the length of the Nile River?",unit:"km",ans:6650,hint:"Enter values in kilometres"},
+    {cat:"General knowledge",text:"What is the operating empty weight of an Airbus A320?",unit:"kg",ans:42600,hint:"Enter values in kilograms"},
+    {cat:"General knowledge",text:"What is the total surface area of the African continent?",unit:"million km²",ans:30.4,hint:"Enter values in million km² (e.g. 25.0)"},
+    {cat:"General knowledge",text:"What is the official height of Mount Everest?",unit:"metres",ans:8849,hint:"Enter values in metres"},
+    {cat:"General knowledge",text:"How many bones does the adult human body have?",unit:"bones",ans:206,hint:"Enter a whole number"},
+    {cat:"Cybersecurity",text:"According to the IBM Cost of a Data Breach Report 2023, how many days does it take on average to identify a data breach?",unit:"days",ans:204,hint:"Enter values in days"},
+    {cat:"Cybersecurity",text:"According to the Verizon DBIR 2023, what percentage of data breaches involve the human element?",unit:"%",ans:74,hint:"Enter a percentage (e.g. 60)"},
+    {cat:"Cybersecurity",text:"What was the average global cost of a data breach in 2023, according to IBM?",unit:"USD million",ans:4.45,hint:"Enter values in USD millions (e.g. 3.5)"},
+    {cat:"Cybersecurity",text:"According to the Sophos State of Ransomware 2023 report, what percentage of organisations were hit by a ransomware attack?",unit:"%",ans:66,hint:"Enter a percentage (e.g. 50)"},
+    {cat:"Cybersecurity",text:"According to the IBM Cost of a Data Breach Report 2023, how many days on average does it take to contain a breach after it is identified?",unit:"days",ans:73,hint:"Enter values in days"}
+  ];
+
+  var answers = [];
+  var root = document.getElementById('qroot');
+
+  function fmt(n) {
+    if (n === Math.floor(n) && n >= 1000) return n.toLocaleString();
+    if (n === Math.floor(n)) return String(n);
+    return n.toFixed(2);
+  }
+
+  function showIntro() {
+    root.innerHTML = '<h1>Calibration test</h1>'
+      + '<p class="intro-lead">For each of the 10 questions, enter a <strong>low</strong> and <strong>high</strong> value such that you are <strong>90% confident</strong> the correct answer falls within your range.</p>'
+      + '<div class="info-box"><div class="info-box-title">What a well-calibrated person should score</div><div class="info-box-text">If your 90% confidence intervals are accurate, you should capture approximately <strong>9 out of 10</strong> correct answers. Most people score between 4 and 6 — this gap is overconfidence bias making itself visible in real time.</div></div>'
+      + '<div class="stat-grid"><div class="stat-card"><div class="stat-label">Questions</div><div class="stat-value">10</div></div><div class="stat-card"><div class="stat-label">Target score</div><div class="stat-value">9 / 10</div></div></div>'
+      + '<p class="note-text">5 general knowledge questions, followed by 5 cybersecurity questions.</p>'
+      + '<button class="btn-primary" onclick="rcbQuiz.showQ(0)">Start test</button>';
+  }
+
+  function showQ(idx) {
+    var q = Qs[idx];
+    var pct = Math.round((idx / 10) * 100);
+    var isCyber = q.cat === 'Cybersecurity';
+    root.innerHTML = '<div class="prog-label">Question ' + (idx+1) + ' of 10</div>'
+      + '<div class="pbar-bg"><div class="pbar-fill" style="width:' + pct + '%"></div></div>'
+      + '<span class="badge ' + (isCyber ? 'badge-cyber' : 'badge-gk') + '">' + q.cat + '</span>'
+      + '<p class="q-text">' + q.text + '</p>'
+      + '<p class="q-hint">' + q.hint + '</p>'
+      + '<div class="input-row">'
+      + '<div class="input-group"><label>Low bound (' + q.unit + ')</label><input type="number" id="rcb-lo" step="any" placeholder="lower estimate"></div>'
+      + '<div class="input-group"><label>High bound (' + q.unit + ')</label><input type="number" id="rcb-hi" step="any" placeholder="upper estimate"></div>'
+      + '</div>'
+      + '<div class="err-msg" id="rcb-err"></div>'
+      + '<button class="btn-primary" onclick="rcbQuiz.submit(' + idx + ')">' + (idx < 9 ? 'Next question' : 'See results') + '</button>';
+
+    var lo = document.getElementById('rcb-lo');
+    var hi = document.getElementById('rcb-hi');
+    lo.focus();
+    lo.addEventListener('keydown', function(e) { if (e.key === 'Enter') hi.focus(); });
+    hi.addEventListener('keydown', function(e) { if (e.key === 'Enter') rcbQuiz.submit(idx); });
+  }
+
+  function submit(idx) {
+    var lo = parseFloat(document.getElementById('rcb-lo').value);
+    var hi = parseFloat(document.getElementById('rcb-hi').value);
+    var err = document.getElementById('rcb-err');
+    if (isNaN(lo) || isNaN(hi)) { err.textContent = 'Please enter both values.'; return; }
+    if (lo >= hi) { err.textContent = 'Low bound must be less than high bound.'; return; }
+    answers[idx] = { lo: lo, hi: hi };
+    if (idx < 9) showQ(idx + 1);
+    else showResults();
+  }
+
+  function showResults() {
+    var hits = 0;
+    var items = Qs.map(function(q, i) {
+      var a = answers[i];
+      var hit = a.lo <= q.ans && q.ans <= a.hi;
+      if (hit) hits++;
+      return { q: q, lo: a.lo, hi: a.hi, hit: hit };
+    });
+
+    var oc = Math.max(0, Math.round(((9 - hits) / 9) * 100));
+    var ocTxt = oc > 0 ? '+' + oc + '%' : '0%';
+    var scoreClass = hits >= 8 ? 'good' : hits >= 5 ? 'warn' : 'bad';
+    var ocClass = oc > 30 ? 'bad' : oc > 10 ? 'warn' : 'good';
+    var actualW = Math.max(12, Math.round((hits / 10) * 100));
+    var actualClass = hits >= 8 ? 'bf-good' : hits >= 5 ? 'bf-warn' : 'bf-bad';
+    var interp = hits >= 9
+      ? 'Excellent calibration — you are a rare exception. Most people score between 4 and 6 out of 10.'
+      : hits >= 7 ? 'Better than average, but still evidence of overconfidence. A truly well-calibrated person reliably captures 9 out of 10.'
+      : hits >= 5 ? 'A typical result. Your confidence intervals were too narrow — you were more certain than the evidence warranted. This is overconfidence bias in action.'
+      : 'A strong overconfidence pattern. Your intervals captured far fewer answers than a 90% confidence level implies — exactly the bias that drives poor risk decisions.';
+
+    var rHTML = items.map(function(item, i) {
+      return '<div class="result-item ' + (item.hit ? 'hit' : 'miss') + '">'
+        + '<div><div class="rq">Q' + (i+1) + '. ' + (item.q.text.length > 90 ? item.q.text.slice(0,90)+'…' : item.q.text) + '</div>'
+        + '<div class="rd">Your range: ' + fmt(item.lo) + ' – ' + fmt(item.hi) + ' ' + item.q.unit + ' &nbsp;·&nbsp; Answer: <strong>' + fmt(item.q.ans) + ' ' + item.q.unit + '</strong></div></div>'
+        + '<span class="hbadge ' + (item.hit ? 'hit' : 'miss') + '">' + (item.hit ? 'Captured' : 'Missed') + '</span></div>';
+    }).join('');
+
+    root.innerHTML = '<h2>Your results</h2>'
+      + '<div class="metrics-grid">'
+      + '<div class="metric-card"><div class="metric-label">Your score</div><div class="metric-value ' + scoreClass + '">' + hits + ' / 10</div></div>'
+      + '<div class="metric-card"><div class="metric-label">Expected</div><div class="metric-value">9 / 10</div></div>'
+      + '<div class="metric-card"><div class="metric-label">Overconfidence</div><div class="metric-value ' + ocClass + '">' + ocTxt + '</div></div>'
+      + '</div>'
+      + '<div class="sec-title">Capture rate</div>'
+      + '<div class="bar-wrap">'
+      + '<div class="bar-row"><div class="bar-lbl">Expected</div><div class="bar-track"><div class="bar-fill bf-exp" style="width:90%">9 / 10</div></div></div>'
+      + '<div class="bar-row"><div class="bar-lbl">Actual</div><div class="bar-track"><div class="bar-fill ' + actualClass + '" style="width:' + actualW + '%">' + hits + ' / 10</div></div></div>'
+      + '</div>'
+      + '<div class="sec-title">Question breakdown</div>'
+      + '<div class="result-list">' + rHTML + '</div>'
+      + '<div class="insight-box"><div class="insight-title">What this means</div><div class="insight-text">' + interp + '</div></div>'
+      + '<div class="btn-row"><button class="btn-primary" onclick="rcbQuiz.restart()">Run again</button></div>';
+  }
+
+  window.rcbQuiz = { showQ: showQ, submit: submit, restart: function() { answers = []; showIntro(); } };
+  showIntro();
+})();
+</script>
